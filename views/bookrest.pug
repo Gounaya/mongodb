@@ -1,0 +1,22 @@
+extends layout
+
+append headblock
+  script(src="/javascripts/usebookrest.js")
+
+block content
+  h1= title
+  table.booklist
+    each book, index in books
+      tr.book
+        td.author= book.author
+        td.title= book.title
+        td= book.year
+        td
+         button.get(data-bookid= book._id)  read
+        td
+         button.put(data-bookid= book._id, data-book= book)  update
+        td
+         button.delete(data-bookid= book._id)  delete
+  button#post create
+  #details2
+  div NB : refreshing page 3s after operation completes

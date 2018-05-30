@@ -1,0 +1,19 @@
+extends layout
+
+
+block content
+  h1= title
+  p result of request : #[code= request]
+  table.booklist
+    each book, index in books
+      tr.book(title= book._id)
+        td.author= book.author
+        td.title
+          a(href= '/books/details'+(index%2 + 1)+'/'+book._id)= book.title      
+        td= book.year
+        td
+          a(href= '/books/adddetails/'+book._id) add details
+        td
+          a(href= '/books/update/'+book._id) update
+        td.delete
+          a(href= '/books/delete/'+book._id) X
